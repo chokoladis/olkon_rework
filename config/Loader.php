@@ -2,9 +2,9 @@
 function autoload($class)
 {
     // Префикс из пространства имен
-    $prefix = 'config\\';
+    $prefix = 'Main\\';
     // Базовая директория для префикса пространства имен
-    $base_dir = __DIR__ . '/';
+    $base_dir = __DIR__ . '/classes/';
     // Проверяем, соответствует ли префикс пространства имен
     $len = strlen($prefix);
     if (strncmp($prefix, $class, $len) !== 0) {

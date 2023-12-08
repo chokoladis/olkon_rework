@@ -1,6 +1,6 @@
 <?
 
-namespace config;
+namespace Main;
 
 class BuildPage {
     // protected headers = array();

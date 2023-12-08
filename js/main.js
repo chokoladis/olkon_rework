@@ -1,8 +1,18 @@
 $(document).ready(function(){
     
-  async function sendQuery(url,postData){
+  async function auth(url,postData){
     let send = await fetch(url, postData);
-    return send.json();
+    let json = await send.json();
+    if (json.success){
+        $('header .success').html(`
+          <span>Вы зашли под логином <b>`+postData['login']+`</b> </span>
+          <div class="links">
+              <a href="clients.php">Клиенты</a>
+              <a href="logout.php">Выйти</a>
+          </div>`)
+    } else {
+      $('header .error').html(json.error);
+    }
   }
 
   $('form#auth').on('submit', (e) => {
@@ -22,16 +32,9 @@ $(document).ready(function(){
       method: 'POST',
       body: data
     }
-    let response = sendQuery('/include/ajax.php', options)
-    // let json = response.json();
+
+    let response = auth('/include/ajax.php?action=auth', options)
     console.log(response);
-    // <div class="success">
-    //     <span>Вы зашли под логином <b>'.$_SESSION["logged_user"].'</b> </span>
-    //     <div class="links">
-    //         <a href="clients.php">Клиенты</a>
-    //         <a href="logout.php">Выйти</a>
-    //     </div>
-    // </div>
   });
 
 

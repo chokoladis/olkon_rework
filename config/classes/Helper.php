@@ -1,6 +1,6 @@
 <?
 
-namespace config;
+namespace Main;
 
 class Helper {
     

@@ -2,8 +2,7 @@
     
     require_once 'Loader.php';
     
-    use config\Database;
-    // use config\;
+    use Main\Database;
     
     $db = new Database();
 ?>
